@@ -1,14 +1,12 @@
 .short-note:hover,
 .short-note.active {
-  border-bottom: 1px solid rgb(255, 228, 145);
-  background-color: rgb(255, 228, 145);
+  background-color: rgba(184, 184, 184, 0.123);
   border-radius: 10px;
 }
 .short-note:hover {
   color: black;
 }
 .short-note {
-  border-bottom: 1px solid #d5d0d0;
   margin: 10px;
   transition: background-color 0.3s ease;
   padding: 10px;

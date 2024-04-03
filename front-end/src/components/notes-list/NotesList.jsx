@@ -3,8 +3,8 @@ import { Title } from "../title/Title";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { TopBar } from "../top-bar/TopBar";
 import { ShortNote } from "../short-note/ShortNote";
-import { Note } from "../note/Note";
-import { useLoaderData, useParams } from "react-router-dom";
+
+import { useLoaderData, NavLink, Outlet } from "react-router-dom";
 
 const NotesContainer = ({ children }) => (
   <div className={styles["notes-container"]}>{children}</div>
@@ -19,24 +19,28 @@ const Notes = ({ children }) => (
 const NotesList = () => {
   const notes = useLoaderData();
 
-  const { folderId } = useParams();
-
   return (
     <NotesContainer>
       <Notes>
         <TopBar>
           <Title>Notes</Title>
 
-          <AddNewButton>+</AddNewButton>
+          <AddNewButton></AddNewButton>
         </TopBar>
-
-        {notes
-          .filter((note) => note.folderId === Number(folderId))
-          .map((note) => (
-            <ShortNote role="listitem" key={note.id} note={note}></ShortNote>
-          ))}
+        {/* //! fix problem with display notes with folders [ep.6] */}
+        {notes.map((note) => (
+          <NavLink key={note.id} to={`/notes/${note.folderId}/note/${note.id}`}>
+            {({ isActive }) => (
+              <ShortNote
+                active={isActive}
+                role="listitem"
+                note={note}
+              ></ShortNote>
+            )}
+          </NavLink>
+        ))}
       </Notes>
-      <Note />
+      <Outlet />
     </NotesContainer>
   );
 };

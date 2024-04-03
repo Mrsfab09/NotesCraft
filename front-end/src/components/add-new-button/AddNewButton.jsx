@@ -1,8 +1,11 @@
-import styles from "./AddNewButton.module.css";
+import { IoAddCircleOutline } from "react-icons/io5";
 
-console.log(styles);
-const AddNewButton = ({ children }) => (
-    <button className={styles["add-new-button"]}>{children}</button>
+const AddNewButton = () => (
+  <IoAddCircleOutline
+    size={"23px"}
+    color="rgba(255, 255, 255, 0.452)"
+    cursor={"pointer"}
+  />
 );
 
 export { AddNewButton };

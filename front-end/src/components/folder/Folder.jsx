@@ -1,6 +1,6 @@
 import styles from "./Folder.module.css";
-import FolderIcon from "../../assets/folder.svg";
 import ArchiveIcon from "../../assets/remove.svg";
+import { FaFolder } from "react-icons/fa6";
 
 const Folder = ({ children, active, icon }) => {
   return (
@@ -8,7 +8,9 @@ const Folder = ({ children, active, icon }) => {
       className={[styles.folder, active ? styles.active : ""].join(" ")}
       role="listitem"
     >
-      <img src={icon === "archive" ? ArchiveIcon : FolderIcon} />
+      <span>
+        {icon === "archive" ? ArchiveIcon : <FaFolder color="#ffda76c7" />}
+      </span>
       {children}
     </div>
   );
