@@ -27,7 +27,6 @@ const NotesList = () => {
 
           <AddNewButton></AddNewButton>
         </TopBar>
-        {/* //! fix problem with display notes with folders [ep.6] */}
         {notes.map((note) => (
           <NavLink key={note.id} to={`/notes/${note.folderId}/note/${note.id}`}>
             {({ isActive }) => (
