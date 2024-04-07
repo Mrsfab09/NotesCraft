@@ -1,9 +1,10 @@
-import { IoAddCircleOutline } from "react-icons/io5";
+// import { IoAddCircleOutline } from "react-icons/io5";
+import { CiMenuKebab } from "react-icons/ci";
 import styles from "./AddNewButton.module.css";
 
 const AddNewButton = () => (
   <button>
-    <IoAddCircleOutline size={"24px"} color="rgba(255, 255, 255, 0.452)" />
+    <CiMenuKebab size={"20px"} color="rgba(255, 255, 255, 0.452)" />
   </button>
 );
 

@@ -13,3 +13,12 @@ body {
   width: 20%;
   height: 100%;
 }
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 190px;
+}
+.wrapper button {
+  margin-top: 7px;
+}

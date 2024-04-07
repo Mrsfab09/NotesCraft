@@ -4,7 +4,13 @@ import { AddNewButton } from "../add-new-button/AddNewButton";
 import { TopBar } from "../top-bar/TopBar";
 import { ShortNote } from "../short-note/ShortNote";
 
-import { useLoaderData, NavLink, Outlet, Form } from "react-router-dom";
+import {
+  useLoaderData,
+  NavLink,
+  Outlet,
+  Form,
+  redirect,
+} from "react-router-dom";
 
 const NotesContainer = ({ children }) => (
   <div className={styles["notes-container"]}>{children}</div>
@@ -27,7 +33,11 @@ export function createNote({ params }) {
       body: "Enter your note",
       folderId: Number(params.folderId),
     }),
-  });
+  })
+    .then((response) => response.json())
+    .then((newNote) => {
+      return redirect(`/notes/${newNote.folderId}/note/${newNote.id}`);
+    });
 }
 
 const NotesList = () => {
@@ -37,10 +47,12 @@ const NotesList = () => {
     <NotesContainer>
       <Notes>
         <TopBar>
-          <Title>Notes</Title>
-          <Form method="POST">
-            <AddNewButton></AddNewButton>
-          </Form>
+          <div className={styles["wrapper"]}>
+            <Title>Notes</Title>
+            <Form method="POST">
+              <AddNewButton></AddNewButton>
+            </Form>
+          </div>
         </TopBar>
         {notes.map((note) => (
           <NavLink key={note.id} to={`/notes/${note.folderId}/note/${note.id}`}>
