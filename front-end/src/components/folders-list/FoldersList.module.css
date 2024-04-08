@@ -17,14 +17,34 @@
 }
 .folders-column {
   background-color: #30454c;
-  border-right: 1px solid #d5d0d01c;
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: auto;
 }
 .wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 90px;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Stylizacja ścieżki przewijania */
+::-webkit-scrollbar-track {
+  background: #f1f1f115; /* Kolor tła ścieżki przewijania */
+}
+
+/* Stylizacja kciuka paska przewijania */
+::-webkit-scrollbar-thumb {
+  background: #acacab1f; /* Kolor kciuka paska przewijania */
+  border-radius: 3px;
+}
+
+/* Stylizacja kciuka paska przewijania po najechaniu myszą */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Kolor kciuka paska przewijania po najechaniu myszą */
 }

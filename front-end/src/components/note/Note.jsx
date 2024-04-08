@@ -31,7 +31,7 @@ export function deleteNote({ params }) {
   }).then(() => {
     return (
       redirect(`/notes/${params.folderId}`),
-      toast.success("Event has been created")
+      toast.success("Note has been deleted ")
     );
   });
 }

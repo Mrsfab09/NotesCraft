@@ -31,6 +31,12 @@ const router = createBrowserRouter([
         },
         children: [
           {
+            path: "delete",
+            action: deleteNote,
+          },
+        ],
+        children: [
+          {
             element: <Note />,
             path: "note/:noteId",
             shouldRevalidate: ({ formAction }) => {

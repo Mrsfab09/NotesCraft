@@ -33,6 +33,17 @@ export async function createFolder(args) {
     });
 }
 
+export function deleteFolder({ params }) {
+  return fetch(`http://localhost:3000/folders/${params.folderId}`, {
+    method: "DELETE",
+  }).then(() => {
+    return (
+      redirect(`/folders/${params.folderId}`),
+      toast.success("Folder has been deleted ")
+    );
+  });
+}
+
 const FoldersList = () => {
   const folders = useLoaderData();
 
@@ -47,7 +58,7 @@ const FoldersList = () => {
               placeholder="Name folder"
               name="folder-name"
             />
-            <AddNewButton type="submit"></AddNewButton>
+            <AddNewButton></AddNewButton>
           </div>
         </Form>
       </TopBar>
