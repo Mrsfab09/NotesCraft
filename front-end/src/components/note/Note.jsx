@@ -61,7 +61,7 @@ const Note = () => {
       >
         <NoteEditor key={note.id}>
           <input type="text" name="title" defaultValue={note.title} />
-          <textarea name="body" defaultValue={note.body} />
+          <textarea name="body" defaultValue={note.body} rows="28" cols="33" />
         </NoteEditor>
       </Form>
     </div>

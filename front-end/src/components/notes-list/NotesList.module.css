@@ -17,7 +17,8 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 150px;
+  gap: 190px;
+  margin-top: 5px;
 }
 .wrapper button {
   margin-top: 1px;

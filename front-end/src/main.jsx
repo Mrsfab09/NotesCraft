@@ -6,11 +6,13 @@ import { App } from "./App";
 import NotesList, { createNote } from "./components/notes-list/NotesList";
 import { deleteNote, Note, updateNote } from "./components/note/Note";
 import { createFolder } from "./components/folders-list/FoldersList";
+import { NotFound } from "./components/not-found/NotFound";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    errorElement: <NotFound />,
     shouldRevalidate: ({ formAction }) => {
       if (formAction === "/") return true;
       else return false;
@@ -31,21 +33,23 @@ const router = createBrowserRouter([
         },
         children: [
           {
-            path: "delete",
-            action: deleteNote,
-          },
-        ],
-        children: [
-          {
             element: <Note />,
             path: "note/:noteId",
+            errorElement: <NotFound />,
             shouldRevalidate: ({ formAction }) => {
               if (formAction) return false;
               else return true;
             },
             action: updateNote,
-            loader: ({ params }) => {
-              return fetch(`http://localhost:3000/notes/${params.noteId}`);
+            loader: async ({ params }) => {
+              const result = await fetch(
+                `http://localhost:3000/notes/${params.noteId}`
+              );
+              if (result.status === 404) {
+                throw new Error();
+              } else {
+                return result.json();
+              }
             },
             children: [
               {
