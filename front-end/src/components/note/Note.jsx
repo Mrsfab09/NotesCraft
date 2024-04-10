@@ -31,7 +31,12 @@ export function deleteNote({ params }) {
   }).then(() => {
     return (
       redirect(`/notes/${params.folderId}`),
-      toast.success("Note has been deleted ")
+      toast.success("Folder has been deleted ", {
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      })
     );
   });
 }
@@ -61,7 +66,7 @@ const Note = () => {
       >
         <NoteEditor key={note.id}>
           <input type="text" name="title" defaultValue={note.title} />
-          <textarea name="body" defaultValue={note.body} rows="28" cols="33" />
+          <textarea name="body" defaultValue={note.body} rows="20" cols="33" />
         </NoteEditor>
       </Form>
     </div>

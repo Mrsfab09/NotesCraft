@@ -5,7 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
 import NotesList, { createNote } from "./components/notes-list/NotesList";
 import { deleteNote, Note, updateNote } from "./components/note/Note";
-import { createFolder } from "./components/folders-list/FoldersList";
+import {
+  createFolder,
+  deleteFolder,
+} from "./components/folders-list/FoldersList";
 import { NotFound } from "./components/not-found/NotFound";
 
 const router = createBrowserRouter([
@@ -22,6 +25,10 @@ const router = createBrowserRouter([
       return fetch("http://localhost:3000/folders");
     },
     children: [
+      {
+        path: "delete",
+        action: deleteFolder,
+      },
       {
         element: <NotesList />,
         path: "/notes/:folderId",

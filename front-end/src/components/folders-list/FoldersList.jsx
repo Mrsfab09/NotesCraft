@@ -1,5 +1,6 @@
 import styles from "./FoldersList.module.css";
 
+import { FaTrash } from "react-icons/fa";
 import { Folder } from "../folder/Folder";
 import { Title } from "../title/Title";
 import { TopBar } from "../top-bar/TopBar";
@@ -34,12 +35,17 @@ export async function createFolder(args) {
 }
 
 export function deleteFolder({ params }) {
-  return fetch(`http://localhost:3000/folders/${params.folderId}`, {
+  return fetch(`http://localhost:3000/notes?folderId=${params.folderId}`, {
     method: "DELETE",
   }).then(() => {
     return (
-      redirect(`/folders/${params.folderId}`),
-      toast.success("Folder has been deleted ")
+      redirect(`/`),
+      toast.success("Folder has been deleted ", {
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      })
     );
   });
 }
@@ -59,6 +65,15 @@ const FoldersList = () => {
               name="folder-name"
             />
             <AddNewButton></AddNewButton>
+          </div>
+        </Form>
+        <Form method="DELETE" action="delete">
+          <div className={styles["wrapper"]}>
+            <button className={styles.button}>
+              <span className={styles.image}>
+                <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />
+              </span>
+            </button>
           </div>
         </Form>
       </TopBar>
