@@ -35,11 +35,11 @@ export async function createFolder(args) {
 }
 
 export function deleteFolder({ params }) {
-  return fetch(`http://localhost:3000/notes?folderId=${params.folderId}`, {
+  return fetch(`http://localhost:3000/folders/${params.folderId}`, {
     method: "DELETE",
   }).then(() => {
     return (
-      redirect(`/`),
+      redirect(`/notes`),
       toast.success("Folder has been deleted ", {
         action: {
           label: "Undo",

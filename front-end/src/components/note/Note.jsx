@@ -31,7 +31,7 @@ export function deleteNote({ params }) {
   }).then(() => {
     return (
       redirect(`/notes/${params.folderId}`),
-      toast.success("Folder has been deleted ", {
+      toast.success("Note has been deleted ", {
         action: {
           label: "Undo",
           onClick: () => console.log("Undo"),
