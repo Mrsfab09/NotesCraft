@@ -23,3 +23,10 @@ body {
 .wrapper button {
   margin-top: 1px;
 }
+.archive {
+  margin-top: 25px;
+  border-radius: 10px;
+}
+.archive:hover {
+  background-color: rgba(184, 184, 184, 0.062);
+}

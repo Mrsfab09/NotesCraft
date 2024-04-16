@@ -1,6 +1,6 @@
 import styles from "./FoldersList.module.css";
 
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaFolder } from "react-icons/fa";
 import { Folder } from "../folder/Folder";
 import { Title } from "../title/Title";
 import { TopBar } from "../top-bar/TopBar";
@@ -70,15 +70,18 @@ const FoldersList = () => {
         <Form method="DELETE" action="delete">
           <div className={styles["wrapper"]}>
             <button className={styles.button}>
-              <span className={styles.image}>
-                <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />
-              </span>
+              <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />
             </button>
           </div>
         </Form>
       </TopBar>
 
-      <Title>Folders</Title>
+      <Title>
+        <div className={styles["folders"]}>
+          <FaFolder />
+          Folders
+        </div>
+      </Title>
       <UserCreatedFolders>
         {folders.map((folder) => (
           <NavLink key={folder.id} to={`/notes/${folder.id}`}>
@@ -88,7 +91,6 @@ const FoldersList = () => {
           </NavLink>
         ))}
       </UserCreatedFolders>
-      {/* <Folder icon="archive">Archiwum</Folder> */}
     </Folders>
   );
 };
