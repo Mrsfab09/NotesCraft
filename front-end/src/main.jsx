@@ -34,12 +34,12 @@ const router = createBrowserRouter([
             `http://localhost:3000/notes?folderId=${params.folderId}`
           );
         },
-        children: [
-          {
-            path: "delete",
-            action: deleteFolder,
-          },
-        ],
+        // children: [
+        //   {
+        //     path: "delete",
+        //     action: deleteFolder,
+        //   },
+        // ],
         children: [
           {
             element: <Note />,
