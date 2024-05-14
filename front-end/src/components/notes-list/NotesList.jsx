@@ -12,6 +12,7 @@ import {
   redirect,
 } from "react-router-dom";
 import { Folder } from "../folder/Folder";
+import { Archive } from "../archive/Archive";
 
 const NotesContainer = ({ children }) => (
   <div className={styles["notes-container"]}>{children}</div>
@@ -68,7 +69,7 @@ const NotesList = () => {
         ))}
         <div className={styles["archive"]}>
           <NavLink to={`/archive`}>
-            <Folder icon="archive">Archives</Folder>
+            <Archive />
           </NavLink>
         </div>
       </Notes>
