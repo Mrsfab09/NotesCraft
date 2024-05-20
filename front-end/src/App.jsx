@@ -8,7 +8,8 @@ export function App() {
 
   return (
     <Layout>
-      {(state === "loading" || state == "submitting") && <Loader />}
+      {/* TODO:Loader */}
+      {/* {(state === "loading" || state == "submitting") && <Loader />} */}
       <FoldersList />
       <Outlet />
     </Layout>

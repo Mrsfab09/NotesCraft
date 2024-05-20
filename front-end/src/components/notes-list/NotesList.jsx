@@ -3,6 +3,7 @@ import { Title } from "../title/Title";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { TopBar } from "../top-bar/TopBar";
 import { ShortNote } from "../short-note/ShortNote";
+import { CgNotes } from "react-icons/cg";
 
 import {
   useLoaderData,
@@ -50,7 +51,10 @@ const NotesList = () => {
       <Notes>
         <TopBar>
           <div className={styles["wrapper"]}>
+            <CgNotes size={"17px"} color="rgba(255, 255, 255, 0.452)" />
             <Title>Notes</Title>
+          </div>
+          <div className={styles["form"]}>
             <Form method="POST">
               <AddNewButton></AddNewButton>
             </Form>

@@ -12,13 +12,16 @@
 }
 .wrapper {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 190px;
-  margin-top: 5px;
+  gap: 10px;
+  padding: 10px;
 }
-.wrapper button {
-  margin-top: 1px;
+.form {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-top: 5px;
 }
 .archive {
   position: absolute;
