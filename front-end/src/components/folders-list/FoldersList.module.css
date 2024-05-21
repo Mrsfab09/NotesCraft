@@ -1,6 +1,7 @@
 .folders-list {
-  width: 270px;
-  margin-left: 30px;
+  width: 300px;
+  margin-left: 10px;
+  padding: 10px;
 }
 .new-folder-input {
   background-color: transparent;
@@ -16,11 +17,12 @@
   color: rgba(255, 255, 255, 0.171);
 }
 .folders-column {
-  background-color: #30454c;
+  background-color: #1b222e;
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow-x: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.11);
 }
 .wrapper {
   display: flex;
@@ -45,8 +47,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
+
 ::-webkit-scrollbar {
   width: 1px;
 }

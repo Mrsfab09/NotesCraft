@@ -1,5 +1,6 @@
 import styles from "./FoldersList.module.css";
 
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { FaTrash, FaFolder } from "react-icons/fa";
 import { Folder } from "../folder/Folder";
 import { Title } from "../title/Title";
@@ -56,7 +57,21 @@ const FoldersList = () => {
   return (
     <Folders>
       <TopBar>
-        <Form method="POST" action="/">
+        <Title>
+          <div className={styles["folders"]}>
+            <FaFolder size={"20px"} />
+            Folders
+          </div>
+        </Title>
+        <div className={styles["folders"]}>
+          <AddNewButton></AddNewButton>
+          <TbLayoutSidebarLeftCollapseFilled
+            size={"23px"}
+            color="rgba(255, 255, 255, 0.603)"
+            cursor={"pointer"}
+          />
+        </div>
+        {/* <Form method="POST" action="/">
           <div className={styles["wrapper"]}>
             <input
               className={styles["new-folder-input"]}
@@ -66,22 +81,16 @@ const FoldersList = () => {
             />
             <AddNewButton></AddNewButton>
           </div>
-        </Form>
-        <Form method="DELETE" action="delete">
+        </Form> */}
+        {/* <Form method="DELETE" action="delete">
           <div className={styles["wrapper"]}>
             <button className={styles.button}>
               <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />
             </button>
           </div>
-        </Form>
+        </Form> */}
       </TopBar>
 
-      <Title>
-        <div className={styles["folders"]}>
-          <FaFolder />
-          Folders
-        </div>
-      </Title>
       <UserCreatedFolders>
         {folders.map((folder) => (
           <NavLink key={folder.id} to={`/notes/${folder.id}`}>

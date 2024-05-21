@@ -25,10 +25,22 @@
 }
 
 .body {
+  width: 200px;
   font-size: 13px;
   font-weight: 400;
   color: grey;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.icon {
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 250px;
+  visibility: hidden;
+}
+
+.icon.active {
+  visibility: visible;
 }
