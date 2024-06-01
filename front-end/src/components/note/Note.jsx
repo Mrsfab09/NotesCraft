@@ -92,15 +92,7 @@ const Note = () => {
   return (
     <div className={styles.container}>
       <Toaster />
-      <TopBar>
-        <Form method="DELETE" action="delete">
-          <button className={styles.button}>
-            <span className={styles.image}>
-              <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />
-            </span>
-          </button>
-        </Form>
-      </TopBar>
+      <TopBar></TopBar>
 
       <Form
         method="PATCH"
