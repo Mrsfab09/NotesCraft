@@ -7,13 +7,19 @@ const ShortNote = ({ note, active }) => {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:3000/notes/${note.id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
+    try {
+      const response = await fetch(`http://localhost:3000/notes/${note.id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to delete the note: ${errorText}`);
+      }
+
       navigate(0); // This will refresh the page
-    } else {
-      console.error("Failed to delete the note.");
+    } catch (error) {
+      console.error("Error during deletion:", error);
     }
   };
 

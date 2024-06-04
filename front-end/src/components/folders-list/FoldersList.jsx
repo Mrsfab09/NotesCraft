@@ -1,12 +1,17 @@
 import styles from "./FoldersList.module.css";
 
+import { GoSun, GoMoon } from "react-icons/go";
+import { IoMdClose } from "react-icons/io";
+import { LuSettings } from "react-icons/lu";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { FaTrash, FaFolder } from "react-icons/fa";
+
 import { Folder } from "../folder/Folder";
 import { Title } from "../title/Title";
 import { TopBar } from "../top-bar/TopBar";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { NavLink, useLoaderData, Form, redirect } from "react-router-dom";
+import { useState } from "react";
 
 const Folders = ({ children }) => (
   <div className={styles["folders-column"]}>{children}</div>
@@ -53,7 +58,15 @@ export function deleteFolder({ params }) {
 
 const FoldersList = () => {
   const folders = useLoaderData();
+  const [isOpen, setIsOpen] = useState(false);
 
+  const openSettings = () => {
+    setIsOpen(true);
+  };
+
+  const closeSettings = () => {
+    setIsOpen(false);
+  };
   return (
     <Folders>
       <TopBar>
@@ -65,12 +78,40 @@ const FoldersList = () => {
         </Title>
         <div className={styles["folders"]}>
           <AddNewButton></AddNewButton>
-          <TbLayoutSidebarLeftCollapseFilled
-            size={"23px"}
+          <LuSettings
+            onClick={openSettings}
+            size={"20px"}
             color="rgba(255, 255, 255, 0.603)"
             cursor={"pointer"}
           />
+          <TbLayoutSidebarLeftCollapseFilled
+            size={"23px"}
+            color="rgba(247, 237, 237, 0.603)"
+            cursor={"pointer"}
+          />
         </div>
+        {isOpen && (
+          <div className={styles["settings"]}>
+            <div className={styles["settings-icon"]}>
+              <GoSun
+                size={"23px"}
+                color="rgba(247, 237, 237, 0.603)"
+                cursor={"pointer"}
+              />
+              <GoMoon
+                size={"23px"}
+                color="rgba(247, 237, 237, 0.603)"
+                cursor={"pointer"}
+              />
+              <IoMdClose
+                onClick={closeSettings}
+                size={"23px"}
+                color="rgba(247, 237, 237, 0.603)"
+                cursor={"pointer"}
+              />
+            </div>
+          </div>
+        )}
         {/* <Form method="POST" action="/">
           <div className={styles["wrapper"]}>
             <input
