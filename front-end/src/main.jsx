@@ -15,16 +15,23 @@ const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
-    errorElement: <NotFound />,
-    shouldRevalidate: ({ formAction }) => {
-      if (formAction === "/") return true;
-      else return false;
-    },
     action: createFolder,
     loader: () => {
       return fetch("http://localhost:3000/folders");
     },
+    shouldRevalidate: ({ formAction }) => {
+      if (formAction === "/") return true;
+      else return false;
+    },
+    errorElement: <NotFound />,
     children: [
+      {
+        path: "archive",
+        element: <NotesList />,
+        loader: () => {
+          return fetch("http://localhost:3000/archive");
+        },
+      },
       {
         element: <NotesList />,
         path: "/notes/:folderId",
@@ -37,7 +44,7 @@ const router = createBrowserRouter([
         // children: [
         //   {
         //     path: "delete",
-        //     action: deleteFolder,
+        //     action: deleteNote,
         //   },
         // ],
         children: [

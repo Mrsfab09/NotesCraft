@@ -12,8 +12,6 @@ import {
   Form,
   redirect,
 } from "react-router-dom";
-import { Folder } from "../folder/Folder";
-import { Archive } from "../archive/Archive";
 
 const NotesContainer = ({ children }) => (
   <div className={styles["notes-container"]}>{children}</div>
@@ -71,11 +69,6 @@ const NotesList = () => {
             )}
           </NavLink>
         ))}
-        <div className={styles["archive"]}>
-          <NavLink to={`/archive`}>
-            <Archive />
-          </NavLink>
-        </div>
       </Notes>
       <Outlet />
     </NotesContainer>

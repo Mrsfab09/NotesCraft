@@ -12,6 +12,7 @@ import { TopBar } from "../top-bar/TopBar";
 import { AddNewButton } from "../add-new-button/AddNewButton";
 import { NavLink, useLoaderData, Form, redirect } from "react-router-dom";
 import { useState } from "react";
+import { Archive } from "../archive/Archive";
 
 const Folders = ({ children }) => (
   <div className={styles["folders-column"]}>{children}</div>
@@ -121,17 +122,6 @@ const FoldersList = () => {
             </div>
           </div>
         )}
-        {/* <Form method="POST" action="/">
-          <div className={styles["wrapper"]}>
-            <input
-              className={styles["new-folder-input"]}
-              type="text"
-              placeholder="Name folder"
-              name="folder-name"
-            />
-            <AddNewButton></AddNewButton>
-          </div>
-        </Form> */}
         {/* <Form method="DELETE" action="delete">
           <div className={styles["wrapper"]}>
             <button className={styles.button}>
@@ -150,6 +140,11 @@ const FoldersList = () => {
           </NavLink>
         ))}
       </UserCreatedFolders>
+      <div className={styles["archive"]}>
+        <NavLink to={`/archive`}>
+          <Archive />
+        </NavLink>
+      </div>
     </Folders>
   );
 };

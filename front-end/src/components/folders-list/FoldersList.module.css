@@ -65,6 +65,18 @@
   margin-top: 7px;
   gap: 10px;
 }
+.archive {
+  position: absolute;
+  width: 15%;
+  bottom: 10px;
+  margin-left: 6px;
+  border-radius: 10px;
+}
+.archive:hover,
+.archive.active {
+  background-color: rgba(184, 184, 184, 0.082);
+  border-radius: 10px;
+}
 
 ::-webkit-scrollbar {
   width: 1px;
