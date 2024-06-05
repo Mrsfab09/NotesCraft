@@ -24,7 +24,13 @@ const UserCreatedFolders = ({ children }) => (
 
 export async function createFolder(args) {
   const data = await args.request.formData();
-  const folderName = data.get("folder-name");
+  let folderName = data.get("folder-name");
+
+  // Ustaw domyślną nazwę, jeśli nie została podana
+  if (!folderName) {
+    folderName = "Untitled";
+  }
+
   return fetch("http://localhost:3000/folders", {
     method: "POST",
     body: JSON.stringify({
@@ -77,7 +83,9 @@ const FoldersList = () => {
           </div>
         </Title>
         <div className={styles["folders"]}>
-          <AddNewButton></AddNewButton>
+          <Form method="POST" action="/">
+            <AddNewButton></AddNewButton>
+          </Form>
           <LuSettings
             onClick={openSettings}
             size={"20px"}
@@ -90,6 +98,7 @@ const FoldersList = () => {
             cursor={"pointer"}
           />
         </div>
+        {/* Settings */}
         {isOpen && (
           <div className={styles["settings"]}>
             <div className={styles["settings-icon"]}>
