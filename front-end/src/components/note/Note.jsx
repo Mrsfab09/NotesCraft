@@ -25,65 +25,65 @@ export async function updateNote({ request, params }) {
   });
 }
 
-let deletedNotes = [];
+// let deletedNotes = [];
 
-export function deleteNote({ params }) {
-  // Downloading note data before deleting
-  return fetch(`http://localhost:3000/notes/${params.noteId}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Failed to fetch note data.");
-      }
-      return response.json();
-    })
-    .then((noteData) => {
-      // Deleted note object
-      const deletedNote = {
-        title: noteData.title,
-        body: noteData.body,
-        id: params.noteId,
-        folderId: params.folderId,
-      };
-      deletedNotes.push(deletedNote);
-      // Deleting a note from the server
-      return fetch(`http://localhost:3000/notes/${params.noteId}`, {
-        method: "DELETE",
-      });
-    })
-    .then(() => {
-      return (
-        redirect(`/notes/${params.folderId}`),
-        toast.success("Note has been deleted ", {
-          action: {
-            label: "Undo",
-            onClick: undoDeleteNote,
-          },
-        })
-      );
-    })
-    .catch((error) => {
-      console.error("Error deleting note:", error);
-    });
-}
+// export function deleteNote({ params }) {
+//   // Downloading note data before deleting
+//   return fetch(`http://localhost:3000/notes/${params.noteId}`)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Failed to fetch note data.");
+//       }
+//       return response.json();
+//     })
+//     .then((noteData) => {
+//       // Deleted note object
+//       const deletedNote = {
+//         title: noteData.title,
+//         body: noteData.body,
+//         id: params.noteId,
+//         folderId: params.folderId,
+//       };
+//       deletedNotes.push(deletedNote);
+//       // Deleting a note from the server
+//       return fetch(`http://localhost:3000/notes/${params.noteId}`, {
+//         method: "DELETE",
+//       });
+//     })
+//     .then(() => {
+//       return (
+//         redirect(`/notes/${params.folderId}`),
+//         toast.success("Note has been deleted ", {
+//           action: {
+//             label: "Undo",
+//             onClick: undoDeleteNote,
+//           },
+//         })
+//       );
+//     })
+//     .catch((error) => {
+//       console.error("Error deleting note:", error);
+//     });
+// }
 
-export function undoDeleteNote() {
-  if (deletedNotes.length > 0) {
-    const lastDeletedNote = deletedNotes.pop();
-    fetch(`http://localhost:3000/notes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: lastDeletedNote.title,
-        body: lastDeletedNote.body,
-        folderId: lastDeletedNote.folderId,
-        id: lastDeletedNote.id,
-      }),
-    });
-  }
-  window.location.reload();
-}
+// export function undoDeleteNote() {
+//   if (deletedNotes.length > 0) {
+//     const lastDeletedNote = deletedNotes.pop();
+//     fetch(`http://localhost:3000/notes`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         title: lastDeletedNote.title,
+//         body: lastDeletedNote.body,
+//         folderId: lastDeletedNote.folderId,
+//         id: lastDeletedNote.id,
+//       }),
+//     });
+//   }
+//   window.location.reload();
+// }
 
 const Note = () => {
   const note = useLoaderData();
@@ -92,7 +92,7 @@ const Note = () => {
   return (
     <div className={styles.container}>
       <Toaster />
-      <TopBar></TopBar>
+      <TopBar />
 
       <Form
         method="PATCH"

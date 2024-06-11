@@ -1,40 +1,50 @@
-import { Form, useNavigate } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import styles from "./ShortNote.module.css";
 import { FaTrash } from "react-icons/fa";
-import { deleteNote } from "../note/Note";
+
+export function deleteNote({ params }) {
+  return fetch(`http://localhost:3000/notes/${params.noteId}`, {
+    method: "DELETE",
+  }).then(() => {
+    return redirect(`/notes/${params.folderId}`);
+  });
+}
+
+let deletedNotes = [];
+
+export function undoDeleteNote() {
+  if (deletedNotes.length > 0) {
+    const lastDeletedNote = deletedNotes.pop();
+    fetch(`http://localhost:3000/notes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: lastDeletedNote.title,
+        body: lastDeletedNote.body,
+        folderId: lastDeletedNote.folderId,
+        id: lastDeletedNote.id,
+      }),
+    });
+  }
+  window.location.reload();
+}
 
 const ShortNote = ({ note, active }) => {
-  const navigate = useNavigate();
-
-  const handleDelete = async () => {
-    try {
-      const response = await fetch(`http://localhost:3000/notes/${note.id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Failed to delete the note: ${errorText}`);
-      }
-
-      navigate(0); // This will refresh the page
-    } catch (error) {
-      console.error("Error during deletion:", error);
-    }
-  };
-
   return (
     <div
       className={[styles["short-note"], active ? styles.active : ""].join(" ")}
     >
       <div className={styles.title}>{note.title}</div>
       <div className={styles.body}>{note.body}</div>
-      <FaTrash
-        onClick={handleDelete}
-        className={[styles["icon"], active ? styles.active : ""].join(" ")}
-        size={"16px"}
-        color="rgba(255, 255, 255, 0.452)"
-      />
+      <Form method="DELETE" action="delete">
+        <FaTrash
+          className={[styles["icon"], active ? styles.active : ""].join(" ")}
+          size={"16px"}
+          color="rgba(255, 255, 255, 0.452)"
+        />
+      </Form>
     </div>
   );
 };

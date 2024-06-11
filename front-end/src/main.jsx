@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
+
 import NotesList, { createNote } from "./components/notes-list/NotesList";
-import { deleteNote, Note, updateNote } from "./components/note/Note";
-import {
-  createFolder,
-  deleteFolder,
-} from "./components/folders-list/FoldersList";
+import { Note, updateNote } from "./components/note/Note";
+import { deleteNote } from "./components/short-note/ShortNote";
+
+import { createFolder } from "./components/folders-list/FoldersList";
 import { NotFound } from "./components/not-found/NotFound";
 
 const router = createBrowserRouter([
@@ -41,12 +41,6 @@ const router = createBrowserRouter([
             `http://localhost:3000/notes?folderId=${params.folderId}`
           );
         },
-        // children: [
-        //   {
-        //     path: "delete",
-        //     action: deleteNote,
-        //   },
-        // ],
         children: [
           {
             element: <Note />,
