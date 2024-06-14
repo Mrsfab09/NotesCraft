@@ -1,3 +1,4 @@
+import { TopBar } from "../top-bar/TopBar";
 import styles from "./Archive.module.css";
 import { FaArchive } from "react-icons/fa";
 

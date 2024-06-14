@@ -5,11 +5,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
 
 import NotesList, { createNote } from "./components/notes-list/NotesList";
-import { Note, updateNote } from "./components/note/Note";
-import { deleteNote } from "./components/short-note/ShortNote";
+import { Note, updateNote, deleteNote } from "./components/note/Note";
 
 import { createFolder } from "./components/folders-list/FoldersList";
 import { NotFound } from "./components/not-found/NotFound";
+import { ArchiveList } from "./components/archive-list/ArchiveList";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "archive",
-        element: <NotesList />,
+        element: <ArchiveList />,
         loader: () => {
           return fetch("http://localhost:3000/archive");
         },
