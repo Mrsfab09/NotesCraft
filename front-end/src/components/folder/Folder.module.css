@@ -20,3 +20,67 @@
   width: 14px;
   height: 14px;
 }
+.edit {
+  position: absolute;
+  margin-left: 90px;
+  margin-top: -5px;
+  visibility: hidden;
+}
+.edit.active {
+  visibility: visible;
+}
+/* style modal rename folder */
+
+.blackScreen {
+  position: fixed;
+  background-color: rgba(12, 12, 12, 0.349);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.container {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.26);
+  width: 400px;
+  height: 300px;
+  padding: 40px;
+}
+.topBar {
+  margin-bottom: 50px;
+}
+.topBar p {
+  font-size: 20px;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.body input {
+  width: 300px;
+  height: 40px;
+  border: 2px solid rgba(0, 255, 191, 0.473);
+  border-radius: 3px;
+  background-color: transparent;
+  padding: 10px;
+}
+.body button {
+  margin-top: 50px;
+  margin-right: 20px;
+  float: right;
+  width: 100px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.buttonRename {
+  background-color: rgba(0, 255, 191, 0.473);
+}
+.buttonCancel {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.445);
+}

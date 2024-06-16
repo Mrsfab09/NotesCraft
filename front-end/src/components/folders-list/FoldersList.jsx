@@ -122,7 +122,7 @@ const FoldersList = () => {
             </div>
           </div>
         )}
-        {/* <Form method="DELETE" action="delete">
+        {/* TODO: <Form method="DELETE" action="delete">
           <div className={styles["wrapper"]}>
             <button className={styles.button}>
               <FaTrash size={"13px"} color="rgba(255, 255, 255, 0.452)" />

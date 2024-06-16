@@ -51,13 +51,15 @@ export function deleteNote({ params }) {
       });
     })
     .then(() => {
-      toast.success("Note has been archived", {
-        action: {
-          label: "Undo",
-          onClick: undoDeleteNote,
-        },
-      });
-      return redirect(`/notes/${params.folderId}`);
+      return (
+        redirect(`/notes/${params.folderId}`),
+        toast.success("Note has been deleted ", {
+          action: {
+            label: "Undo",
+            onClick: undoDeleteNote,
+          },
+        })
+      );
     })
     .catch((error) => {
       console.error("Error deleting note:", error);
